@@ -13,6 +13,9 @@
 
      <div style="position:relative; top: 60px; right:-150px">
         <form action="{{url('/uploadfood')}}" method="post" enctype="multipart/form-data">
+          <div>
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+          </div>
         <div>
             <label>Title</label>
             <input type="text" name="title" placeholder="Enter your Title" required>
