@@ -21,7 +21,9 @@ class AdminController extends Controller
   }
 
   public function foodmenu(){
-    return view("admin.foodmenu");
+    $foodData = food::all();
+    //dd($foodData);
+    return view("admin.foodmenu", compact("foodData"));
   }
 
   public function uploadfood(Request $request){

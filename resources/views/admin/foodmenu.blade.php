@@ -36,7 +36,28 @@
              <input style="color:black; background-color: red;" type="submit" value="Save" >
         </div>
        </form>
+       <div>
+      <table>
+        <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        </tr>
+        @foreach($foodData as $n=>$food)
+        <tr>
+          <th>{{$n+1}}</th>
+          <th>{{$food->title}}</th>
+          <th>{{$food->price}}</th>
+          <th>{{$food->description}}</th>
+          <th><img src="{{asset('foodimage/'.$food->image)}}" height="50px" width="50px"></th>
+        </tr>
+        @endforeach
+      </table>
      </div>
+     </div>
+     
           
      </div>   
    @include("admin.adminscript")

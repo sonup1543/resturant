@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index(){
         $data = food::all();
-        return view('home',compact('data'));
+        return view('home', compact('data'));
     }
 
     public function redirects(){
@@ -21,7 +21,9 @@ class HomeController extends Controller
         if($usertype == '1'){
             return view('admin.adminhome');
         }else{
-            return view('home');
+            $data = food::all();
+            return view('home', compact('data'));
         }
     }
+
 }
