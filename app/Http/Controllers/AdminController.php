@@ -25,7 +25,6 @@ class AdminController extends Controller
   }
 
   public function uploadfood(Request $request){
-    //dd("hello");
     $data = new food;
     $image = $request->image;
     $imagename = time().'.'.$image->getClientOriginalExtension();
@@ -35,7 +34,6 @@ class AdminController extends Controller
     $data->price = $request->price;
     $data->description = $request->description;
     $data->save();
-    return redirect()->back();
-   
+    return redirect()->back();   
   }
 }

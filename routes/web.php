@@ -23,8 +23,6 @@ Route::get('/redirects',[HomeController::class, 'redirects']);
 Route::get('/users', [AdminController::class, 'user']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
-
-
 Route::get('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
 
 //Route::get('/home', 'App\Http\Controllers\homeController@index');
