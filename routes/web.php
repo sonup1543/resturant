@@ -25,7 +25,7 @@ Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
 Route::get('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
 
-//Route::get('/home', 'App\Http\Controllers\homeController@index');
+Route::get('/delete/food', [AdminController::class, 'deleteFood'])->name('delete.food');
 
 Route::middleware([
     'auth:sanctum',

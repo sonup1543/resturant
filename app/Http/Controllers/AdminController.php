@@ -38,4 +38,8 @@ class AdminController extends Controller
     $data->save();
     return redirect()->back();   
   }
+
+  public function deleteFood(request $request){
+    dd("hi");
+  }
 }

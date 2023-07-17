@@ -44,6 +44,7 @@
         <th>Price</th>
         <th>Description</th>
         <th>Image</th>
+        <th>Action</th>
         </tr>
         @foreach($foodData as $n=>$food)
         <tr>
@@ -52,6 +53,7 @@
           <th>{{$food->price}}</th>
           <th>{{$food->description}}</th>
           <th><img src="{{asset('foodimage/'.$food->image)}}" height="50px" width="50px"></th>
+          <th><a href="{{route('delete.food',$food->id)}}">Delete</a></th>
         </tr>
         @endforeach
       </table>
