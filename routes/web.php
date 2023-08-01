@@ -21,11 +21,13 @@ use App\Http\Controllers\AdminController;
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/redirects',[HomeController::class, 'redirects']);
 Route::get('/users', [AdminController::class, 'user']);
-Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
+Route::get('/foodmenu', [AdminController::class, 'foodmenu'])->name('foodmenu');
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
 Route::get('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
 
-Route::get('/delete/food', [AdminController::class, 'deleteFood'])->name('delete.food');
+Route::get('/delete/food/{id}', [AdminController::class, 'deleteFood'])->name('delete.food');
+Route::get('/update/food/{id}', [AdminController::class, 'updateFood'])->name('food.update');
+Route::post('/updatefood/{id}', [AdminController::class, 'updateFoodData'])->name('food.update.data');
 
 Route::middleware([
     'auth:sanctum',
