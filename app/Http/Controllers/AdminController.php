@@ -68,7 +68,10 @@ class AdminController extends Controller
       return redirect()->route('foodmenu')->with('message', 'Saved successfully');
     }else{
       return redirect()->back();
-    }
-    dd($foodData);
+    }   
+  }
+
+  public function reservationQuery(request $request){
+    dd("hi");
   }
 }
