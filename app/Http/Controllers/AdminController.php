@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\food;
+use App\Models\Reservation;
 
 
 class AdminController extends Controller
@@ -72,6 +73,21 @@ class AdminController extends Controller
   }
 
   public function reservationQuery(request $request){
-    dd("hi");
+  // dd($request->name);
+     $reservationSave = new Reservation;
+     $reservationSave->name = $request->name;
+     $reservationSave->email = $request->email;
+     $reservationSave->phone = $request->phone;
+     $reservationSave->numberguests = $request->numberguests;
+     $reservationSave->date = $request->date;
+     $reservationSave->time = $request->time;
+     $reservationSave->message = $request->message;
+     $reservationSave->status = 1;
+     if($reservationSave->save()){
+      return redirect()->back()->with('message', 'Saved successfully');
+     }else{
+      return redirect()->back()->with('message', 'Saved successfully');
+     }
+
   }
 }

@@ -318,7 +318,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             </div>
                             <div class="col-md-6 col-sm-12">
                               <fieldset>
-                                <select value="number-guests" name="number-guests" id="number-guests">
+                                <select value="number-guests" name="numberguests" id="number-guests">
                                     <option value="number-guests">Number Of Guests</option>
                                     <option name="1" id="1">1</option>
                                     <option name="2" id="2">2</option>
