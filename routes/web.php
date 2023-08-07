@@ -32,6 +32,13 @@ Route::post('/updatefood/{id}', [AdminController::class, 'updateFoodData'])->nam
 Route::get('/reservation', [AdminController::class, 'reservation'])->name('reservation');
 Route::post('/reservation/query', [AdminController::class, 'reservationQuery'])->name('reservation.query');
 
+Route::get('/chefs/main', [AdminController::class, 'chefs'])->name('chefs');
+Route::post('/chef/upload', [AdminController::class, 'chefUpload'])->name('chef.upload');
+Route::get('/chef/delete/{id}', [AdminController::class, 'chefDelete'])->name('chefs.delete');
+Route::get('/chef/update/{id}', [AdminController::class, 'chefUpdate'])->name('chef.update');
+Route::post('/chef/update/date/{id}', [AdminController::class, 'chefUpdateData'])->name('chef.update.data');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

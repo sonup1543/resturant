@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\user;
 use App\Models\food;
+use App\Models\Chefs;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(request $request){
         $data = food::all();
-        return view('home', compact('data'));
+        $chefsdata = Chefs::all();
+        return view('home', compact('data', 'chefsdata'));
     }
 
     public function redirects(){

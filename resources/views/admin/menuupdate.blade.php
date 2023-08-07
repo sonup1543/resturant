@@ -27,7 +27,7 @@
         <div>
             <label>Image</label>
             <label><img src="{{asset('foodimage/'.$foodData->image)}}" height="50px" width="50px"></label>
-            <input style="color:black;" type="file" name="image" value="{{$foodData->image}}">
+            <input style="color:black;" type="file" name="image">
         </div>
         <div>
             <label>Description</label>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\food;
 use App\Models\Reservation;
+use App\Models\Chefs;
 
 
 class AdminController extends Controller
@@ -86,7 +87,7 @@ class AdminController extends Controller
      if($reservationSave->save()){
       return redirect()->back()->with('message', 'Saved successfully');
      }else{
-      return redirect()->back()->with('message', 'Saved successfully');
+      return redirect()->back()->with('message', 'Pleasr Try After Some Time');
      }
 
   }
@@ -94,5 +95,58 @@ class AdminController extends Controller
   public function reservation(request $request){
     $reservationData = Reservation::all();
     return view("admin.reservation", compact('reservationData'));
+  }
+
+  public function chefs(request $request){
+    $chefsdata = Chefs::all();
+    return view("admin.chefs", compact('chefsdata'));
+  }
+
+  public function chefUpload(request $request){
+    $chefsData = new Chefs;
+    $chefsData->name = $request->name;
+    $chefsData->speciallity = $request->speciallity;
+    if($request->image != null){
+      $image = $request->image;
+      $imagename = time().'.'.$image->getClientOriginalExtension();
+      $request->image->move('chefs',$imagename);
+      $chefsData->image = $imagename;
+      }
+    if($chefsData->save()){
+      return redirect()->back()->with('message', 'Saved successfully');
+    }else{
+      return redirect()->back()->with('message', 'Try Again');
+    }
+  }
+
+  public function chefDelete(request $request){
+   $deletechef = Chefs::find($request->id);
+   if($deletechef->delete()){
+    return redirect()->back()->with('message', 'Delete successfully');
+   }else{
+    return redirect()->back()->with('message', 'Try Again');
+   }
+  }
+
+  public function chefUpdate(request $request){
+    $updatechef = Chefs::find($request->id);
+    return view('admin.chefupdate', compact('updatechef'));
+  }
+
+  public function chefUpdateData(request $request){
+    $chefsData = Chefs::find($request->id);
+    $chefsData->name = $request->name;
+    $chefsData->speciallity = $request->speciallity;
+    if($request->image != null){
+      $image = $request->image;
+      $imagename = time().'.'.$image->getClientOriginalExtension();
+      $request->image->move('chefs',$imagename);
+      $chefsData->image = $imagename;
+      }
+    if($chefsData->save()){
+      return redirect()->route('chefs')->with('message', 'Saved successfully');
+    }else{
+      return redirect()->back()->with('message', 'Try Again');
+    }
   }
 }
