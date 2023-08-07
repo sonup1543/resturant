@@ -90,4 +90,9 @@ class AdminController extends Controller
      }
 
   }
+
+  public function reservation(request $request){
+    $reservationData = Reservation::all();
+    return view("admin.reservation", compact('reservationData'));
+  }
 }

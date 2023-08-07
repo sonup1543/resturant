@@ -29,6 +29,7 @@ Route::get('/delete/food/{id}', [AdminController::class, 'deleteFood'])->name('d
 Route::get('/update/food/{id}', [AdminController::class, 'updateFood'])->name('food.update');
 Route::post('/updatefood/{id}', [AdminController::class, 'updateFoodData'])->name('food.update.data');
 
+Route::get('/reservation', [AdminController::class, 'reservation'])->name('reservation');
 Route::post('/reservation/query', [AdminController::class, 'reservationQuery'])->name('reservation.query');
 
 Route::middleware([
