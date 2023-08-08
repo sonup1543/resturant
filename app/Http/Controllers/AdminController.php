@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\user;
 use App\Models\food;
 use App\Models\Reservation;
 use App\Models\Chefs;
+use App\Models\Cart;
 
 
 class AdminController extends Controller
@@ -148,5 +151,32 @@ class AdminController extends Controller
     }else{
       return redirect()->back()->with('message', 'Try Again');
     }
+  }
+
+  public function addCart(request $request){
+    $cartItem = new Cart;
+    $cartItem->user_id= Auth::id();
+    $cartItem->food_id= $request->productid;
+    $cartItem->quantity= $request->quantity;
+    $cartItem->save();
+    return redirect()->back();
+  }
+
+  public function cartHome(request $request){
+     $user_id = Auth::id();     
+     $cartValue = Cart::where('user_id', $user_id)->count(); 
+    // $cartInfo = Cart::where('user_id', $user_id)->join('food', 'food.id','=','carts.food_id')->get();
+   $cartInfo = Cart::where('user_id', $user_id)->get();
+   $foodData = food::all();
+     return view('cart', compact('cartInfo','cartValue','cartInfo','foodData'));
+  }
+
+  public function cartDelete(request $request){
+    $cartdelte = Cart::find($request->id);
+   if($cartdelte->delete()){
+        return redirect()->back();
+   }else{
+        return redirect()->back();
+   }
   }
 }

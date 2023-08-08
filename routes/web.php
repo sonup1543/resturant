@@ -20,6 +20,15 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/',[HomeController::class, 'index']);
 Route::get('/redirects',[HomeController::class, 'redirects']);
+Route::post('/reservation/query', [AdminController::class, 'reservationQuery'])->name('reservation.query');
+Route::get('/cart', [AdminController::class, 'cartHome'])->name('cart');
+
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
 Route::get('/users', [AdminController::class, 'user']);
 Route::get('/foodmenu', [AdminController::class, 'foodmenu'])->name('foodmenu');
 Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
@@ -30,7 +39,6 @@ Route::get('/update/food/{id}', [AdminController::class, 'updateFood'])->name('f
 Route::post('/updatefood/{id}', [AdminController::class, 'updateFoodData'])->name('food.update.data');
 
 Route::get('/reservation', [AdminController::class, 'reservation'])->name('reservation');
-Route::post('/reservation/query', [AdminController::class, 'reservationQuery'])->name('reservation.query');
 
 Route::get('/chefs/main', [AdminController::class, 'chefs'])->name('chefs');
 Route::post('/chef/upload', [AdminController::class, 'chefUpload'])->name('chef.upload');
@@ -38,13 +46,9 @@ Route::get('/chef/delete/{id}', [AdminController::class, 'chefDelete'])->name('c
 Route::get('/chef/update/{id}', [AdminController::class, 'chefUpdate'])->name('chef.update');
 Route::post('/chef/update/date/{id}', [AdminController::class, 'chefUpdateData'])->name('chef.update.data');
 
+Route::post('/add-cart', [AdminController::class, 'addCart'])->name('addcart');
+Route::get('/cart/delete/{id}', [AdminController::class, 'cartDelete'])->name('cart.delete');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
 });
+

@@ -14,6 +14,8 @@
             <div class="col-lg-12">
                 <div class="owl-menu-item owl-carousel">
                     @foreach($data as $datas)
+                    <form action="{{route('addcart')}}" method="post">
+                    @csrf
                     <div class="item">
                         <div style="background-image:url({{asset('foodimage/'.$datas->image)}})"class='card'>
                             <div class="price"><h6>₹ {{$datas->price}}</h6></div>
@@ -25,7 +27,11 @@
                               </div>
                             </div>
                         </div>
+                        <input type="hidden" name="productid" value="{{$datas->id}}">
+                        <input type="number" name="quantity" min="1" value="1" style="width:50%;">
+                        <input type="submit" name="addcart" value="addcart">
                     </div>
+                    </form>
                    @endforeach
                 </div>
             </div>
