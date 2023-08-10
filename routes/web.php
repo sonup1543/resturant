@@ -51,6 +51,7 @@ Route::get('/cart/delete/{id}', [AdminController::class, 'cartDelete'])->name('c
 
 Route::post('/order/conform', [AdminController::class, 'orderConform'])->name('order.conform');
 
+Route::get('/order', [AdminController::class, 'orderFetch'])->name('order');
 
 });
 

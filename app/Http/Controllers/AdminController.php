@@ -195,4 +195,11 @@ class AdminController extends Controller
     }
     return redirect()->back();
   }
+  
+  public function orderFetch(request $request){
+    $orderdata = Order::all();
+    return view('admin.order', compact('orderdata'));
+  }
+
+
 }
