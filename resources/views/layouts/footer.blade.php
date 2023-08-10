@@ -28,6 +28,19 @@
             </div>
         </div>
     </footer>
+    <script type="text/javascript">
+       $("#order").click(
+        function(){
+            $("#orderaform").show(); 
+        }
+       )
+
+       $("#close").click(
+        function(){
+            $("#orderaform").hide();
+        }
+       )
+    </script>
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

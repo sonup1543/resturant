@@ -49,6 +49,8 @@ Route::post('/chef/update/date/{id}', [AdminController::class, 'chefUpdateData']
 Route::post('/add-cart', [AdminController::class, 'addCart'])->name('addcart');
 Route::get('/cart/delete/{id}', [AdminController::class, 'cartDelete'])->name('cart.delete');
 
+Route::post('/order/conform', [AdminController::class, 'orderConform'])->name('order.conform');
+
 
 });
 

@@ -11,6 +11,7 @@ use App\Models\food;
 use App\Models\Reservation;
 use App\Models\Chefs;
 use App\Models\Cart;
+use App\Models\Order;
 
 
 class AdminController extends Controller
@@ -178,5 +179,20 @@ class AdminController extends Controller
    }else{
         return redirect()->back();
    }
+  }
+
+  public function orderConform(request $request){
+   // dd("hello");
+    foreach($request->foodQuantity as $key=>$fquantity){
+      $data = new Order;
+      $data->foodname= $fquantity;
+      $data->price= $request->foodprice[$key];
+      $data->quantity= $request->foodQuantity[$key];
+      $data->name= $request->name;
+      $data->phone= $request->phone;
+      $data->address= $request->address;
+      $data->save();
+    }
+    return redirect()->back();
   }
 }
